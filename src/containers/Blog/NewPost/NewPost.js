@@ -22,16 +22,25 @@ class NewPost extends Component {
       axios.post('posts', post)
         .then(response => {
           console.log(response);
-          this.setState({submitted: true});
+          //this.setState({submitted: true});
+
+          //We can use following two methods to navigate back to where we want without any state updates and
+          //Without any conditional routines.
+
+          //Here it will not replace the last navigated url.
+          //this.props.history.push('/posts');
+
+          //Here it will replace the last navigate url.
+          this.props.history.replace('/posts');
         });
     };
 
     render () {
-      let redirect = null;
-      if(this.state.submitted) {
-        {/* when you are out side of a react router Switch you can't access the from property of Redirect */}
-        redirect = <Redirect to="/posts"/>;
-      }
+      // let redirect = null;
+      // if(this.state.submitted) {
+      //   {/* when you are out side of a react router Switch you can't access the from property of Redirect */}
+      //   redirect = <Redirect to="/posts"/>;
+      // }
         return (
             <div className="NewPost">
                 {redirect}
